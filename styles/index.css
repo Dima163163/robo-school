@@ -1281,6 +1281,10 @@
     justify-content: center;
   }
 
+  .footer__wrapper {
+    text-align: center;
+  }
+
   .footer__contact {
     display: none;
   }
