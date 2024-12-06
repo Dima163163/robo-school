@@ -1303,4 +1303,16 @@
   .footer__text {
     font-size: 14px;
   }
+
+  .modal {
+    overflow: hidden;
+    width: 96%;
+    height: 100%;
+  }
+
+  .modal_wrapper {
+    height: 100%;
+    overflow: hidden;
+  }
+
 }
