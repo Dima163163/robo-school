@@ -1,7 +1,6 @@
 export const initModal = () => {
   console.log('Modal');
   const modalOverlay = document.querySelector('.overlay');
-  const modalOpenBtn = document.querySelectorAll('.slide__btn');
   const treanerItems = document.querySelector('.trainers-section__slider');
   const btnCloseModal = document.querySelector('.modal_btn')
 

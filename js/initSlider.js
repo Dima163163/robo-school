@@ -9,13 +9,10 @@ export const initSlider = () => {
   
   scrollBarThumb.addEventListener('mousedown', (e) => {
     const startX = e.clientX;
-    console.log('startX: ', startX);
     const thumbPosition = scrollBarThumb.offsetLeft;
-    console.log('thumbPosition: ', thumbPosition);
 
     const handleMouseMove = (e) => {
       const deltaX = e.clientX - startX;
-      console.log('deltaX: ', deltaX);
       const newThumbPosition = thumbPosition + deltaX;
       const maxThumbPosition = sliderScrollBar.getBoundingClientRect().width - scrollBarThumb.offsetWidth;
 
