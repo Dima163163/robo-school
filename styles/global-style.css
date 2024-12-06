@@ -1,0 +1,100 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+:root {
+  --font-family: 'Jost', sans-serif;
+  --bg-blue: #141024;
+  --scroll-bar-thumb: #141024;
+  --bg-grey: #f9f9f9;
+  --bg-color: #fff;
+  --btn-color-black: #141024;
+  --text-color-black: #141024;
+  --text-color-white: #fff;
+  --color-red: #d52027;
+}
+
+body {
+  background-color: var(--bg-color, #fff);
+  color: var(--text-color-black, #141024);
+  font-weight: 400;
+  font-size: 20px;
+  font-family: var(--font-family);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-width: 100%;
+  height: 100%;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  transition-duration: 0.2s;
+  transition-property: all;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+fieldset {
+  margin: 0;
+}
+
+iframe {
+  border: none;
+}
+
+/*
+Доступно скрываю элементы
+*/
+
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}
+
+/*
+Пример контейнера
+
+Если контейнер 1180px по макету,
+то для max-width прибавляем паддинги 30px*2, 
+в итоге 1240px
+Чтобы контент не прижимался к краям экрана
+*/
+
+
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
