@@ -1315,4 +1315,7 @@
     overflow: hidden;
   }
 
+  .teacher_info {
+    max-height: 60%;
+  }
 }
