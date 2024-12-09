@@ -4,8 +4,10 @@ export const initSlider = () => {
   const btnNext = document.querySelector('.button-slide__next');
   const sliderScrollBar = document.querySelector('.slider-scrollbar');
   const scrollBarThumb = document.querySelector('.scrollbar-thumb');
+  const slide = document.querySelector('.slide')
+  let slidePosition = 0;
 
-  const maxScroollLeft = sliderList.scrollWidth - sliderList.clientWidth;
+  const maxScrollLeft = sliderList.scrollWidth - sliderList.clientWidth;
   
   scrollBarThumb.addEventListener('mousedown', (e) => {
     const startX = e.clientX;
@@ -15,11 +17,10 @@ export const initSlider = () => {
       const deltaX = e.clientX - startX;
       const newThumbPosition = thumbPosition + deltaX;
       const maxThumbPosition = sliderScrollBar.getBoundingClientRect().width - scrollBarThumb.offsetWidth;
-
       const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
-      const scrollPosition = (boundedPosition / maxThumbPosition) * maxScroollLeft;
+      const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
 
-      scrollBarThumb.computedStyleMap.left = `${newThumbPosition}px`;
+      scrollBarThumb.style.left = `${boundedPosition}px`;
       sliderList.scrollLeft = scrollPosition;
     }
 
@@ -34,18 +35,37 @@ export const initSlider = () => {
 
   const updateScrollPosition = () => {
     const scrollPosition = sliderList.scrollLeft;
-    const thumbPosition = (scrollPosition / maxScroollLeft) * (sliderScrollBar.clientWidth - scrollBarThumb.offsetWidth);
+    const thumbPosition = Math.ceil((scrollPosition / maxScrollLeft) * (sliderScrollBar.clientWidth - scrollBarThumb.clientWidth));
+
     scrollBarThumb.style.left = `${thumbPosition}px`;
   }
 
-  sliderList.addEventListener('scroll' , updateScrollPosition)
+  sliderList.addEventListener('scroll' , updateScrollPosition);
+
+  const scrollSlide = (type) => {
+    let styleSlide = window.getComputedStyle(slide, null);
+    const marginRigth = parseInt(styleSlide.marginRight);
+    const widthSlide = slide.clientWidth + marginRigth;
+
+    if (type === 'next') {
+      if (slidePosition < maxScrollLeft && (maxScrollLeft - slidePosition) > widthSlide && (maxScrollLeft - slidePosition) > 0) {
+        slidePosition = slidePosition + widthSlide;;
+      }
+    }
+
+    if (type === 'prev') {
+      if (slidePosition > widthSlide && (slidePosition - widthSlide) > 0) {
+        slidePosition = slidePosition - widthSlide;
+      }
+    }
+  }
 
   btnNext.addEventListener('click', () => {
-    const scrollLeft = (sliderList.scrollWidth - sliderList.clientWidth) / 2
-      sliderList.scrollBy({left: scrollLeft, behavior: 'smooth'})
+    scrollSlide('next')
+    sliderList.scrollBy({left: slidePosition, behavior: 'smooth'})
   })
   btnPrev.addEventListener('click', () => {
-    const scrollRight = (sliderList.scrollWidth - sliderList.clientWidth) / 2
-    sliderList.scrollBy({left: -scrollRight, behavior: 'smooth'})
+    scrollSlide('prev')
+    sliderList.scrollBy({left: -slidePosition, behavior: 'smooth'})
   })
 }

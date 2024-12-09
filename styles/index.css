@@ -382,7 +382,6 @@
 
 .slider {
   display: flex;
-  gap: 40px;
   overflow: auto;
   white-space: nowrap;
   width: 100%;
@@ -396,6 +395,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-right: 40px;
+}
+
+.slide:last-child {
+  margin-right: 0;
 }
 
 .slide__img {
@@ -743,7 +747,7 @@
 }
 
 .teacher_info {
-  max-height: 372px;
+  height: 372px;
   overflow: auto;
 }
 
@@ -915,13 +919,13 @@
   }
 
   .slider {
-    gap: 20px;
     margin-bottom: 15px;
   }
 
   .slide {
     max-width: 220px;
     max-height: 436px;
+    margin-right: 20px;
   }
 
   .slide div {
@@ -1316,6 +1320,6 @@
   }
 
   .teacher_info {
-    max-height: 60%;
+    min-height: 150px;
   }
 }
